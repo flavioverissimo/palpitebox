@@ -2,4 +2,3 @@
 node_modules
 .env.local
 credentials.json
-pages/api/get-promo.js
