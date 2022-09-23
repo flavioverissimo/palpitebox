@@ -7,9 +7,11 @@ const Pesquisa = () => {
     Email: "",
     Whatsapp: "",
     Nota: 0,
+    Indicacao: "",
   });
 
   const notas = [0, 1, 2, 3, 4, 5];
+  const indicacao = ["sim", "não"];
 
   const [success, setSuccess] = useState(false);
   const [retorno, setRetorno] = useState({});
@@ -40,24 +42,23 @@ const Pesquisa = () => {
   return (
     <div className="text-colorLogo">
       <PageTitle title="Pesquisa" />
-      <p className="text-center text-2xl font-bold mb-4">
-        Critica, Sugestões e Elogios
+      <p class="text-3xl text-center font-semibold text-colorLogo lg:text-4xl">
+        Criticas e Sugestões
       </p>
-      <p className="text-center">
-        O estabelecimento X sempre busca por atender melhor seus clientes.
-        <span className="block">
-          Por isso, estamos sempre abertos a ouvir sua opnião
-        </span>
+      <p className="mx-auto text-center text-sm xl:w-2/5 sm:w-2/5 text-colorLogo">
+        Para melhor aproveitamento de nossos clientes, nosso estabelecimento
+        está sempre em busca de melhorias, então, sua avaliação é muito
+        importante!
       </p>
       {!success && (
-        <div className="w-1/3 mx-auto mt-16 uppercase text-base tracking-wide font-semibold">
+        <div className="w-1/3 mx-auto mt-12 text-base tracking-wide font-semibold">
           <label for="nome" className="block mb-1">
             Nome:
           </label>
           <input
             id="nome"
             type="text"
-            className="p-3 w-full border-none bg-gray-200"
+            className="p-3 w-full bg-white border rounded-md focus:border-blue-400 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40"
             onChange={onChange}
             name="Nome"
             value={form.Nome}
@@ -69,7 +70,7 @@ const Pesquisa = () => {
           <input
             id="email"
             type="text"
-            className="p-3 w-full border-none bg-gray-200"
+            className="p-3 w-full bg-white border rounded-md focus:border-blue-400 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40"
             onChange={onChange}
             name="Email"
             value={form.Email}
@@ -81,15 +82,36 @@ const Pesquisa = () => {
           <input
             id="whatsapp"
             type="text"
-            className="p-3 w-full border-none bg-gray-200"
+            className="p-3 w-full bg-white border rounded-md focus:border-blue-400 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40"
             onChange={onChange}
             name="Whatsapp"
             value={form.Whatsapp}
             placeholder="Whatsapp"
           />
-          <div className="mb-2 mt-4">Nota:</div>
+          <div className="mb-2 mt-8 text-center">
+            Das notas disponíveis abaixo, qual você acha que melhor nos
+            representa?
+          </div>
           <div className="flex justify-center mb-1">
             {notas.map((nota) => (
+              <label className="block w-12 text-center">
+                {nota} <br />
+                <input
+                  id="nota"
+                  type="radio"
+                  name="Nota"
+                  value={nota}
+                  placeholder="Whatsapp"
+                  onChange={onChange}
+                />
+              </label>
+            ))}
+          </div>
+          <div className="mb-2 mt-8 text-center">
+            Você indicaria nosso estabelecimento para amigos?
+          </div>
+          <div className="flex justify-center mb-1">
+            {indicacao.map((nota) => (
               <label className="block w-12 text-center">
                 {nota} <br />
                 <input
